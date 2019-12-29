@@ -47,7 +47,7 @@ addons:
 install: 
   - python3 -m pip install -e .[dev]
   - python3 -m pip install -U --target=`pwd` --no-deps https://files.pythonhosted.org/packages/e7/39/4bb711f7bcdd5db182da4fc7d968bb4e7ac909d80ff0384c6dd3ecc3c144/aat-0.0.3.tar.gz#sha256=96371c3b92aed460e178e650400e79473cc942113a152b4bbf78b09490625bc2  # install latest aat base
-  - git checkout aat/cryto # the above install clobbers source, so restore
+  - git checkout aat/crypto # the above install clobbers source, so restore
 
 script:
   - make tests
