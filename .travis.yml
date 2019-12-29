@@ -1,0 +1,61 @@
+dist: xenial
+language: node_js
+node_js: "12"
+sudo: required
+
+
+matrix:
+  fast_finish: true
+  include:
+    # Python 3.7 Linux build
+    - python: "3.7"
+      language: python
+      cache: pip
+
+    # Python 3.7 Mac build
+    - cache: pip
+      os: osx
+      osx_image: xcode11.2
+
+  allow_failures:
+    # Mac builds get extensively tested by the core developers.
+    # They are also extremely slow to load on travis.
+    # So pull requests should check these, but they are allowed
+    # to fail
+    # Python 3.7 Mac build
+    - cache: pip
+      os: osx
+      osx_image: xcode11.2
+
+addons:
+  apt:
+    update: true
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.9
+      - g++-4.9
+  homebrew:
+    update: true
+    packages:
+      - python
+      - pybind11
+      - cmake
+
+
+
+install: 
+  - python3 -m pip install -e .[dev]
+  - python3 -m pip install -U --target=`pwd` --no-deps https://files.pythonhosted.org/packages/e7/39/4bb711f7bcdd5db182da4fc7d968bb4e7ac909d80ff0384c6dd3ecc3c144/aat-0.0.3.tar.gz#sha256=96371c3b92aed460e178e650400e79473cc942113a152b4bbf78b09490625bc2  # install latest aat base
+  - git checkout aat/cryto # the above install clobbers source, so restore
+
+script:
+  - make tests
+  - make lint
+
+branches:
+  only:
+  - master
+
+notifications:
+  email: false
