@@ -7,3 +7,7 @@
 [![PyPI](https://img.shields.io/pypi/v/aat.crypto.svg)](https://pypi.python.org/pypi/aat.crypto)
 [![Docs](https://img.shields.io/readthedocs/aat.crypto.svg)](http://aat.crypto.readthedocs.io/en/latest/)
  
+
+ ## installation
+ `pip install aat.crypto`
+ 

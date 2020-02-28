@@ -12,6 +12,7 @@ lint: ## run linter
 
 docs:  ## Build the sphinx docs
 	make -C docs html
+	open ./docs/_build/html/index.html
 
 dist:  ## dist to pypi
 	rm -rf dist build

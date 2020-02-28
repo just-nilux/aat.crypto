@@ -83,3 +83,12 @@ coverage
 experiments
 aat_test
 docs/api
+docs/index.md
+
+aat/*.py
+aat/*.so
+aat/aat/
+aat/exchanges
+aat/strategies
+aat/tests
+aat/ui
